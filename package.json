@@ -1,0 +1,37 @@
+{
+  "name": "mbtiles-extractor",
+  "version": "0.0.1",
+  "description": "Takes tiles out of an mbtiles file and puts them somewhere in a directory structure.",
+  "main": "src/index.js",
+  "bin": {
+    "mbtiles-extractor": "bin/mbtiles-extractor.js"
+  },
+  "keywords": [
+    "mbtiles",
+    "tiles",
+    "raster-tiles",
+    "vector-tiles",
+    "AWS"
+  ],
+  "scripts": {
+  },
+  "author": "Rowan Winsemius",
+  "license": "MIT",
+  "dependencies": {
+    "agentkeepalive": "^4.1.2",
+    "aws-sdk": "^2.652.0",
+    "cli-progress": "^3.6.1",
+    "colors": "^1.4.0",
+    "esm": "^3.2.25",
+    "load-json-file": "^6.2.0",
+    "p-queue": "^6.3.0",
+    "p-throttle": "^3.1.0",
+    "prompt": "^1.0.0",
+    "sqlite3": "^4.1.1",
+    "yargs": "^15.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-mourner": "^3.0.0"
+  }
+}
