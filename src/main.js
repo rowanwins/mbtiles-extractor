@@ -45,7 +45,7 @@ function getOutputFilename (row) {
     // Flip Y coordinate because MBTiles files are TMS.
     // tip from https://github.com/mapbox/node-mbtiles/blob/master/lib/mbtiles.js#L158-L159
     const y = (1 << row.zoom_level) - 1 - row.tile_row;
-    return `${options.basePath}${row.zoom_level}/${row.tile_column}/${y}.${options.fileExtension}`
+    return `${options.basePath}${row.zoom_level}/${row.tile_column}/${y}${options.fileExtension}`
 }
 
 async function adoptProfile () {
