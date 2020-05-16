@@ -223,6 +223,15 @@ export async function cli () {
                 agent: defaultAgent
             }
         }
+        if (process.env.AWS_ACCESS_KEY_ID) {
+            awsOptions.accessKeyId = process.env.AWS_ACCESS_KEY_ID
+        }
+        if (process.env.AWS_SECRET_ACCESS_KEY) {
+            awsOptions.secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY
+        }
+        if (process.env.AWS_S3_ENDPOINT) {
+            awsOptions.endpoint = new AWS.Endpoint(process.env.AWS_S3_ENDPOINT)
+        }
         if (options.awsProfile) {
             const profile = await adoptProfile()
             Object.assign(awsOptions, profile);
