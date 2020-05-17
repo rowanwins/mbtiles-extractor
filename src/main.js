@@ -45,7 +45,7 @@ function getOutputFilename (row) {
     // Flip Y coordinate because MBTiles files are TMS.
     // tip from https://github.com/mapbox/node-mbtiles/blob/master/lib/mbtiles.js#L158-L159
     const y = (1 << row.zoom_level) - 1 - row.tile_row;
-    return `${options.basePath}${row.zoom_level}/${row.tile_column}/${y}${options.fileExtension}`
+    return `${options.basePath}${row.zoom_level}/${row.tile_column}/${y}.${options.fileExtension}`
 }
 
 async function adoptProfile () {
@@ -149,13 +149,13 @@ function processMetadata (rows) {
             let ext = null
             if (r.value === 'image/png') {
                 contentType = r.value
-                ext = '.png'
+                ext = 'png'
             } else if (r.value === 'image/jpeg') {
                 contentType = r.value
-                ext = '.jpg'
+                ext = 'jpg'
             } else if (r.value === 'pbf') {
                 contentType = 'application/x-protobuf'
-                ext = '.pbf'
+                ext = 'pbf'
                 contentEncoding = 'gzip'
             }
             options.fileExtension = options.fileExtension ? options.fileExtension : ext
