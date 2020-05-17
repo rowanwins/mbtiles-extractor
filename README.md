@@ -47,6 +47,8 @@ mbtiles-extractor --input=some.mbtiles --outputType=local --localOutDir=Data --t
 
 `--acl=public-read` The access control level of the tile.
 
+`--force=false` Force replace any existing files without asking.
+
 #### Local storage options
 
 `--localOutDir` **Required** The name of a folder to place the tiles in.

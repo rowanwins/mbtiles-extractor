@@ -19,6 +19,7 @@ const options = yargs
     .option('minZoom', {describe: 'The minimum zoom level of tiles to transfer.', type: 'integer', default: 0})
     .option('maxZoom', {describe: 'The max zoom level of tiles to transfer, otherwise uses the max level available.', type: 'integer'})
     .option('fileExtension', {describe: 'Overrides the file extension contained in the metadata table.', type: 'string'})
+    .option('force', {describe: 'Force replace any existing files without asking.', type: 'boolean', default: false})
 
     // AWS S3 related options
     .option('bucket', {describe: 'The name of the bucket', type: 'string'})
@@ -234,19 +235,23 @@ export async function cli () {
             MaxKeys: 1
         }
 
-        // // Check if there are already any files in that dir
-        s3.listObjects(basePath, function (err, data) {
-            if (err) errorEncounted(err)
-            if (data.Contents.length > 0) {
-                prompt.start()
-                prompt.get(schema, (err, result) => {
-                    if (err) errorEncounted(err)
-                    if (result.agree) processMbTiles()
-                });
-            } else {
-                processMbTiles()
-            }
-        })
+        if (options.force) {
+            processMbTiles()
+        } else {
+            // Check if there are already any files in that dir
+            s3.listObjects(basePath, function (err, data) {
+                if (err) errorEncounted(err)
+                if (data.Contents.length > 0) {
+                    prompt.start()
+                    prompt.get(schema, (err, result) => {
+                        if (err) errorEncounted(err)
+                        if (result.agree) processMbTiles()
+                    });
+                } else {
+                    processMbTiles()
+                }
+            })
+        }
     } else if (options.outputType === 'local') {
         if (options.localOutDir === undefined) errorEncounted('For outputType=local you must specify the localOutDir option.')
         const dest = path.join(options.localOutDir, options.basePath)
