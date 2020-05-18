@@ -150,13 +150,13 @@ function processMetadata (rows) {
             let ext = null
             if (r.value === 'image/png') {
                 contentType = r.value
-                ext = '.png'
+                ext = 'png'
             } else if (r.value === 'image/jpeg') {
                 contentType = r.value
-                ext = '.jpg'
+                ext = 'jpg'
             } else if (r.value === 'pbf') {
                 contentType = 'application/x-protobuf'
-                ext = '.pbf'
+                ext = 'pbf'
                 contentEncoding = 'gzip'
             }
             options.fileExtension = options.fileExtension ? options.fileExtension : ext
