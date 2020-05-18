@@ -1,6 +1,6 @@
 {
   "name": "mbtiles-extractor",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Takes tiles out of an mbtiles file and puts them somewhere in a directory structure.",
   "main": "src/index.js",
   "bin": {
