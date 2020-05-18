@@ -154,12 +154,18 @@ function processMetadata (rows) {
             } else if (r.value === 'image/jpeg') {
                 contentType = r.value
                 ext = 'jpg'
+            } else if (r.value === 'image/webp') {
+                contentType = r.value
+                ext = 'webp'
             } else if (r.value === 'pbf') {
                 contentType = 'application/x-protobuf'
                 ext = 'pbf'
                 contentEncoding = 'gzip'
             }
             options.fileExtension = options.fileExtension ? options.fileExtension : ext
+            if (options.fileExtension.startsWith('.')) {
+                options.fileExtension = options.fileExtension.substr(1)
+            }
         }
     })
 }
