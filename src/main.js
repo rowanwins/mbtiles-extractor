@@ -230,6 +230,9 @@ export async function cli () {
                 agent: defaultAgent
             }
         }
+        if (process.env.AWS_S3_ENDPOINT) {
+            awsOptions.endpoint = new AWS.Endpoint(process.env.AWS_S3_ENDPOINT)
+        }
         if (options.awsProfile) {
             const profile = await adoptProfile()
             Object.assign(awsOptions, profile);
