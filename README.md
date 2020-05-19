@@ -47,6 +47,8 @@ mbtiles-extractor --input=some.mbtiles --outputType=local --localOutDir=Data --t
 
 `--acl=public-read` The access control level of the tile.
 
+An optional `AWS_S3_ENDPOINT` environment variable may be provided, which is mainly used for S3 compatiable services. eg. `export AWS_S3_ENDPOINT=https://sgp1.digitaloceanspaces.com` if using Digital Ocean Spaces.
+
 #### Local storage options
 
 `--localOutDir` **Required** The name of a folder to place the tiles in.
